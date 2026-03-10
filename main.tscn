@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://cvwafp24n2fna"]
+
+[ext_resource type="PackedScene" uid="uid://dgc2dx8rp56ir" path="res://player.tscn" id="1_ig7tw"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7dm0k"]
+size = Vector3(60, 2, 60)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ig7tw"]
+size = Vector3(60, 2, 60)
+
+[node name="Main" type="Node" unique_id=1343790411]
+
+[node name="Ground" type="StaticBody3D" parent="." unique_id=723518547]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground" unique_id=318748091]
+shape = SubResource("BoxShape3D_7dm0k")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground" unique_id=1291502919]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+mesh = SubResource("BoxMesh_ig7tw")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1535816215]
+transform = Transform3D(1, 0, 0, 0, 0.56946605, 0.82201487, 0, -0.82201487, 0.56946605, 0, 13.702613, 0)
+
+[node name="Player" parent="." unique_id=526790128 instance=ExtResource("1_ig7tw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.2694726, 0)
