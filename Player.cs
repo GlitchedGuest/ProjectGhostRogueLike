@@ -6,7 +6,7 @@ public partial class Player : CharacterBody3D
 {
 	private Camera3D camera;
 	
-	public const float Speed = 5.0f;
+	public float Speed = 5.0f;
 	public float Boost = 1.0f;
 	public const float JumpVelocity = 4.5f;
 
@@ -42,12 +42,25 @@ public partial class Player : CharacterBody3D
 		}
 
 		// Handle Jump.
-		if (Input.IsActionPressed("run"))
+		if (Input.IsActionPressed("run") && !Input.IsActionPressed("crouch"))
 		{
 			Boost = 2.0f;
 		}
 		else
-			Boost = 1.0f;
+			if(IsOnFloor())
+				Boost = 1.0f;
+
+		// Handle Jump.
+		if (Input.IsActionPressed("crouch"))
+		{
+			camera.Position = new Vector3(camera.Position.X, 0.248f, camera.Position.Z);
+			Speed = 2.5f;
+		}
+		else{
+			camera.Position = new Vector3(camera.Position.X, 0.748f, camera.Position.Z);
+			Speed = 5.0f;
+			}
+
 
 		// Get the input direction and handle the movement/deceleration.
 		// As good practice, you should replace UI actions with custom gameplay actions.
@@ -60,8 +73,10 @@ public partial class Player : CharacterBody3D
 		}
 		else
 		{
-			velocity.X = Mathf.MoveToward(Velocity.X, 0, Speed);
-			velocity.Z = Mathf.MoveToward(Velocity.Z, 0, Speed);
+			if(IsOnFloor()){
+				velocity.X = Mathf.MoveToward(Velocity.X, 0, Speed);
+				velocity.Z = Mathf.MoveToward(Velocity.Z, 0, Speed);
+			}
 		}
 
 		Velocity = velocity;
