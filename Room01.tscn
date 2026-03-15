@@ -14,10 +14,6 @@ size = Vector3(20, 1, 20)
 [sub_resource type="BoxMesh" id="BoxMesh_psr6j"]
 size = Vector3(20, 1, 20)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_6p8v6"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_nrgu5"]
-
 [node name="Node3D" type="Node3D" unique_id=1535535755]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1883778170]
@@ -80,34 +76,4 @@ shape = SubResource("BoxShape3D_xl76n")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Ground" unique_id=1702782373]
 mesh = SubResource("BoxMesh_psr6j")
-surface_material_override/0 = ExtResource("1_xl76n")
-
-[node name="Ground3" type="StaticBody3D" parent="." unique_id=2127230756]
-transform = Transform3D(1, 0, 0, 0, 4.369237, 0, 0, 0, 9.023763, 4.6042776, 2.483837, -5.0573864)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground3" unique_id=592601229]
-shape = SubResource("BoxShape3D_6p8v6")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground3" unique_id=1214810114]
-mesh = SubResource("BoxMesh_nrgu5")
-surface_material_override/0 = ExtResource("1_xl76n")
-
-[node name="Ground4" type="StaticBody3D" parent="." unique_id=1621568320]
-transform = Transform3D(-0.4813712, -3.829709, 0, 0.8765168, -2.1032248, 0, 0, 0, 9.023763, 2.7382007, 1.0028086, -5.057352)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground4" unique_id=1901298063]
-shape = SubResource("BoxShape3D_6p8v6")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground4" unique_id=1451127341]
-mesh = SubResource("BoxMesh_nrgu5")
-surface_material_override/0 = ExtResource("1_xl76n")
-
-[node name="Ground5" type="StaticBody3D" parent="." unique_id=350490379]
-transform = Transform3D(0.061379526, 4.3609986, 0, -0.9981145, 0.26818168, 0, 0, 0, 9.023763, 8.138374, 6.4503613, 5.2981215)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground5" unique_id=1688956518]
-shape = SubResource("BoxShape3D_6p8v6")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground5" unique_id=289653127]
-mesh = SubResource("BoxMesh_nrgu5")
 surface_material_override/0 = ExtResource("1_xl76n")

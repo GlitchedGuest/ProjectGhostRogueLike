@@ -1,12 +1,16 @@
 [gd_scene format=3 uid="uid://dgc2dx8rp56ir"]
 
 [ext_resource type="Script" uid="uid://bd58x7lw8hwhm" path="res://Player.cs" id="1_4flbx"]
+[ext_resource type="Script" uid="uid://c371fwjj8xakb" path="res://RayCast3d.cs" id="2_onrkg"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_sh265"]
 size = Vector3(0.5, 2, 0.5)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4flbx"]
 size = Vector3(0.5, 2, 0.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_onrkg"]
+size = Vector3(0.1, 0.1, 0.5)
 
 [node name="Player" type="CharacterBody3D" unique_id=526790128]
 script = ExtResource("1_4flbx")
@@ -20,4 +24,19 @@ mesh = SubResource("BoxMesh_sh265")
 shape = SubResource("BoxShape3D_4flbx")
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=107381647]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.747925, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.747925, -0.30966467)
+
+[node name="RayCast3D" type="RayCast3D" parent="Camera3D" unique_id=315015908]
+transform = Transform3D(1.9106855e-15, 4.371139e-08, 1, 1, -4.371139e-08, 0, 4.371139e-08, 1, -4.371139e-08, 0, 0, -0.025494337)
+target_position = Vector3(0, -10, 0)
+hit_from_inside = true
+collide_with_areas = true
+debug_shape_custom_color = Color(0.848291, 0.06947427, 0.48400402, 1)
+debug_shape_thickness = 1
+script = ExtResource("2_onrkg")
+
+[node name="Node3D" type="Node3D" parent="Camera3D" unique_id=258471412]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Camera3D/Node3D" unique_id=613796800]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.345, -0.2, -0.41)
+mesh = SubResource("BoxMesh_onrkg")
