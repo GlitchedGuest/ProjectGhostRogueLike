@@ -1,7 +1,9 @@
 [gd_scene format=3 uid="uid://cvwafp24n2fna"]
 
 [ext_resource type="PackedScene" uid="uid://feu3a2akvjw4" path="res://Room01.tscn" id="1_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://01rw557eie2l" path="res://hud.tscn" id="1_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://dgc2dx8rp56ir" path="res://player.tscn" id="1_ig7tw"]
+[ext_resource type="PackedScene" uid="uid://blirp8vfmloxt" path="res://enemy.tscn" id="3_h2yge"]
 
 [node name="Main" type="Node" unique_id=1343790411]
 
@@ -9,3 +11,14 @@
 
 [node name="Player" parent="." unique_id=526790128 instance=ExtResource("1_ig7tw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.2694726, 0)
+
+[node name="enemy" parent="." unique_id=2062582952 instance=ExtResource("3_h2yge")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.2853236, 1.5, 0.1408112)
+
+[node name="enemy2" parent="." unique_id=1214061341 instance=ExtResource("3_h2yge")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.3383894, 1.7721815, 6.0065775)
+
+[node name="enemy3" parent="." unique_id=1553019797 instance=ExtResource("3_h2yge")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.9577866, 2.044363, 3.7972555)
+
+[node name="HUD" parent="." unique_id=858763490 instance=ExtResource("1_1bvp3")]

@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://01rw557eie2l"]
+
+[ext_resource type="Texture2D" uid="uid://816hfivsjxgd" path="res://icon.svg" id="1_37p78"]
+
+[node name="HUD" type="CanvasLayer" unique_id=858763490]
+
+[node name="Control" type="Control" parent="." unique_id=1467230064]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Icon" type="Sprite2D" parent="Control" unique_id=2030406177]
+modulate = Color(1, 1, 1, 0.29411766)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_37p78")
