@@ -5,7 +5,10 @@ public partial class Gun : Node3D
 {
 	protected double fireRate = 0.0d;
 	protected int magCount = 0;
+	protected int currentMagCount;
 	protected int damage = 0;
+
+	private double reloadDelay = 2.5;
 
 	private double fireDelay;
 
@@ -13,6 +16,7 @@ public partial class Gun : Node3D
 	public override void _Ready()
 	{
 		fireDelay = fireRate;
+		currentMagCount = magCount;
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -20,17 +24,38 @@ public partial class Gun : Node3D
 	{
 		if(fireDelay > 0)
 			fireDelay -= delta;
+		if(reloadDelay > 0 && reloadDelay < 2)
+			reloadDelay -= delta;
+		if(reloadDelay <= 0.001)
+		{
+			currentMagCount = magCount;
+			reloadDelay = 2.5;
+		}
 	}
 
 	public void Fire(RayCast3D raycast3D)
 	{
-		if(fireDelay <= 0.001)
+		if(fireDelay <= 0.001 && currentMagCount > 0)
 		{
 			GD.Print("fire");
 			if(raycast3D.IsColliding())
-				if(raycast3D.GetCollider() is Enemy n)
-					(n as Enemy).Hit(damage);
+				GD.Print(raycast3D.GetCollider());
+				//if(raycast3D.GetCollider() is Enemy n)
+					//(n as Enemy).Hit(damage);
 			fireDelay = fireRate;
+			currentMagCount -= 1;
 		}
+		else if(fireDelay <= 0.001 && currentMagCount == 0)
+			Reload();
+	}
+
+	public void Reload()
+	{
+		reloadDelay = 1.5;
+	}
+
+	public int GetMagCount()
+	{
+		return currentMagCount;
 	}
 }

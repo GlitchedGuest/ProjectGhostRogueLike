@@ -19,3 +19,31 @@ mouse_filter = 2
 modulate = Color(1, 1, 1, 0.29411766)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_37p78")
+
+[node name="Label" type="Label" parent="." unique_id=1938818963]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -49.0
+offset_right = 98.0
+grow_vertical = 0
+scale = Vector2(2.3, 2.3)
+pivot_offset = Vector2(-9.74, 58.325)
+text = "ARMOR: 5
+HEALTH: 10"
+vertical_alignment = 2
+
+[node name="AmmoCount" type="Label" parent="." unique_id=2083809789]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -23.0
+grow_horizontal = 0
+grow_vertical = 0
+scale = Vector2(4.31, 4.31)
+pivot_offset = Vector2(42.555, 25.53)
+text = "20"
+horizontal_alignment = 2

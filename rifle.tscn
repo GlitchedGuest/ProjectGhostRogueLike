@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://bad1ampx6gsgd"]
+
+[ext_resource type="PackedScene" uid="uid://cyugk0r0pi2c7" path="res://gun.tscn" id="1_36w3d"]
+[ext_resource type="Script" uid="uid://0j0pahg0qpt5" path="res://Rifle.cs" id="2_jao7y"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_gkrl1"]
+size = Vector3(1, 0.1, 0.1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_orkfg"]
+size = Vector3(0.3, 0.1, 0.1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_q4vfd"]
+size = Vector3(0.3, 0.2, 0.1)
+
+[node name="Gun" unique_id=1401040886 instance=ExtResource("1_36w3d")]
+script = ExtResource("2_jao7y")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." index="0" unique_id=1160463111]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.10612497, 0, 0)
+mesh = SubResource("BoxMesh_gkrl1")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." index="1" unique_id=559207359]
+transform = Transform3D(0.58352697, -0.81209373, 0, 0.81209373, 0.58352697, 0, 0, 0, 1, -0.23437609, -0.10663042, 0)
+mesh = SubResource("BoxMesh_orkfg")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="." index="2" unique_id=1350325733]
+transform = Transform3D(-0.25871792, -0.96595293, 0, 0.96595293, -0.25871792, 0, 0, 0, 1, 0.17755558, -0.16640085, 0)
+mesh = SubResource("BoxMesh_q4vfd")

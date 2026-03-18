@@ -7,7 +7,13 @@ public partial class Player : CharacterBody3D
 	private Camera3D camera;
 	private RayCast3D raycast3D;
 	private Gun gun;
-	
+	private Label HUD;
+	private Label HUDAmmo;
+
+
+	private int health = 100;
+	private int armor = 50;
+
 	public float Speed = 5.0f;
 	public float Boost = 1.0f;
 	public const float JumpVelocity = 4.5f;
@@ -17,7 +23,9 @@ public partial class Player : CharacterBody3D
 		Input.MouseMode = Input.MouseModeEnum.Captured;
 		camera = GetNode<Camera3D>("Camera3D");
 		raycast3D = camera.GetNode<RayCast3D>("RayCast3D");
-		gun = camera.GetNode<Node3D>("GunHolder").GetNode<Gun>("Gun");
+		gun = camera.GetNode<Node3D>("GunHolder").GetNode<Gun>("Rifle");
+		HUD = GetNode<CanvasLayer>("HUD").GetNode<Label>("Label");
+		HUDAmmo = GetNode<CanvasLayer>("HUD").GetNode<Label>("AmmoCount");
 	}
 
 	public override void _UnhandledInput(InputEvent @event)
@@ -31,9 +39,29 @@ public partial class Player : CharacterBody3D
 
     public override void _Process(double delta)
     {
+		HUD.Text = $"ARMOR: {armor}\nHEALTH: {health}";
+		HUDAmmo.Text = $"{gun.GetMagCount()}";
+
+
         if (Input.IsActionPressed("fire"))
 		{
 			gun.Fire(raycast3D);	
+		}
+		if (Input.IsActionJustPressed("primary"))
+		{
+			gun.Visible = false;
+			gun = camera.GetNode<Node3D>("GunHolder").GetNode<Gun>("Rifle");
+			gun.Visible = true;	
+		}
+		if (Input.IsActionJustPressed("secondary"))
+		{
+			gun.Visible = false;
+			gun = camera.GetNode<Node3D>("GunHolder").GetNode<Gun>("Pistol");
+			gun.Visible = true;	
+		}
+		if (Input.IsActionJustPressed("reload"))
+		{
+			gun.Reload();	
 		}
     }
 
