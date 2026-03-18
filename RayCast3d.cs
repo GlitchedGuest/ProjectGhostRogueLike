@@ -13,7 +13,7 @@ public partial class RayCast3d : RayCast3D
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-		if (Input.IsActionPressed("fire"))
+		/*if (Input.IsActionPressed("fire"))
 		{
 			if(fireDelay < 0)
 			{
@@ -22,16 +22,16 @@ public partial class RayCast3d : RayCast3D
 			}	
 		}
 		if(fireDelay > 0)
-			fireDelay -= delta;
+			fireDelay -= delta;*/
 
 	}
 
 	private void Fire()
 	{
-		GD.Print("fire");
+		/*GD.Print("fire");
 			if(IsColliding())
 				if(GetCollider() is Enemy n)
 					(n as Enemy).Death();
-		GetTree().CreateTimer(0.5);
+		GetTree().CreateTimer(0.5);*/
 	}
 }

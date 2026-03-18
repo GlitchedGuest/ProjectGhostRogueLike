@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://cyugk0r0pi2c7"]
+
+[ext_resource type="Script" uid="uid://b8q4gg8duyh31" path="res://Gun.cs" id="1_vk1bi"]
+
+[node name="Gun" type="Node3D" unique_id=1401040886]
+script = ExtResource("1_vk1bi")

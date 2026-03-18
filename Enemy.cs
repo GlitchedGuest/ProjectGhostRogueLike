@@ -15,9 +15,9 @@ public partial class Enemy : Node3D
 	{
 	}
 
-	public void Death()
+	public void Hit(int damage)
 	{
-		health -= 25;
+		health -= damage;
 		if(health <= 0)
 			QueueFree();
 	}

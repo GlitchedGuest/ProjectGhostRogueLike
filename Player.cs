@@ -5,6 +5,8 @@ using System.Diagnostics;
 public partial class Player : CharacterBody3D
 {
 	private Camera3D camera;
+	private RayCast3D raycast3D;
+	private Gun gun;
 	
 	public float Speed = 5.0f;
 	public float Boost = 1.0f;
@@ -14,6 +16,8 @@ public partial class Player : CharacterBody3D
 	{
 		Input.MouseMode = Input.MouseModeEnum.Captured;
 		camera = GetNode<Camera3D>("Camera3D");
+		raycast3D = camera.GetNode<RayCast3D>("RayCast3D");
+		gun = camera.GetNode<Node3D>("GunHolder").GetNode<Gun>("Gun");
 	}
 
 	public override void _UnhandledInput(InputEvent @event)
@@ -24,6 +28,14 @@ public partial class Player : CharacterBody3D
 				camera.RotateX(-mouseMotion.Relative.Y * 0.002f);
 		}
 	}
+
+    public override void _Process(double delta)
+    {
+        if (Input.IsActionPressed("fire"))
+		{
+			gun.Fire(raycast3D);	
+		}
+    }
 
 	public override void _PhysicsProcess(double delta)
 	{

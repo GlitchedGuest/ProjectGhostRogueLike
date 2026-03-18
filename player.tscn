@@ -1,16 +1,13 @@
 [gd_scene format=3 uid="uid://dgc2dx8rp56ir"]
 
 [ext_resource type="Script" uid="uid://bd58x7lw8hwhm" path="res://Player.cs" id="1_4flbx"]
-[ext_resource type="Script" uid="uid://c371fwjj8xakb" path="res://RayCast3d.cs" id="2_onrkg"]
+[ext_resource type="PackedScene" uid="uid://cxehqkthxonxp" path="res://pistol.tscn" id="3_i3pqv"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_sh265"]
 size = Vector3(0.5, 2, 0.5)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4flbx"]
 size = Vector3(1, 2, 1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_onrkg"]
-size = Vector3(0.1, 0.1, 0.5)
 
 [node name="Player" type="CharacterBody3D" unique_id=526790128]
 script = ExtResource("1_4flbx")
@@ -29,10 +26,8 @@ transform = Transform3D(1.9106855e-15, 4.371139e-08, 1, 1, -4.371139e-08, 0, 4.3
 target_position = Vector3(0, -50, 0)
 collide_with_areas = true
 debug_shape_custom_color = Color(0.848291, 0.06947427, 0.48400402, 1)
-script = ExtResource("2_onrkg")
 
-[node name="Node3D" type="Node3D" parent="Camera3D" unique_id=258471412]
+[node name="GunHolder" type="Node3D" parent="Camera3D" unique_id=258471412]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0.428, -0.145, -0.595)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Camera3D/Node3D" unique_id=613796800]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.345, -0.2, -0.41)
-mesh = SubResource("BoxMesh_onrkg")
+[node name="Gun" parent="Camera3D/GunHolder" unique_id=1401040886 instance=ExtResource("3_i3pqv")]

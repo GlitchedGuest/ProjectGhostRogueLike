@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://cxehqkthxonxp"]
+
+[ext_resource type="PackedScene" uid="uid://cyugk0r0pi2c7" path="res://gun.tscn" id="1_08c3m"]
+[ext_resource type="Script" uid="uid://cwe6btcpbwrae" path="res://Pistol.cs" id="2_bttkv"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_bttkv"]
+size = Vector3(0.5, 0.1, 0.1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_6e3nq"]
+size = Vector3(0.3, 0.1, 0.1)
+
+[node name="Gun" unique_id=1401040886 instance=ExtResource("1_08c3m")]
+script = ExtResource("2_bttkv")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." index="0" unique_id=1602060207]
+mesh = SubResource("BoxMesh_bttkv")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." index="1" unique_id=69617617]
+transform = Transform3D(0.58352697, -0.81209373, 0, 0.81209373, 0.58352697, 0, 0, 0, 1, -0.23437609, -0.10663042, 0)
+mesh = SubResource("BoxMesh_6e3nq")
