@@ -13,6 +13,8 @@ public partial class Player : CharacterBody3D
 
 	private int health = 100;
 	private int armor = 50;
+	private double armorRefreshRate = 1.5;
+
 
 	public float Speed = 5.0f;
 	public float Boost = 1.0f;
@@ -63,6 +65,9 @@ public partial class Player : CharacterBody3D
 		{
 			gun.Reload();	
 		}
+		
+		ArmorLogic(delta);
+
     }
 
 	public override void _PhysicsProcess(double delta)
@@ -121,5 +126,25 @@ public partial class Player : CharacterBody3D
 
 		Velocity = velocity;
 		MoveAndSlide();
+	}
+
+	public void ArmorLogic(double delta)
+	{
+		if(armor < 50)
+		{
+			armorRefreshRate -= delta;
+			if(armorRefreshRate < 0)
+				armor = 50;
+		}
+		else
+			armorRefreshRate = 1;
+	}
+	public void GetDamage(int damage)
+	{
+		if(armor > 0)
+			armor -= damage;
+		else
+			health -= damage;
+		armorRefreshRate = 1.5;
 	}
 }

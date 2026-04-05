@@ -39,9 +39,12 @@ public partial class Gun : Node3D
 		{
 			GD.Print("fire");
 			if(raycast3D.IsColliding())
-				GD.Print(raycast3D.GetCollider());
-				//if(raycast3D.GetCollider() is Enemy n)
-					//(n as Enemy).Hit(damage);
+				if(raycast3D.GetCollider() is Enemy n){
+					raycast3D.SetCollisionMaskValue(2,true);
+					raycast3D.ForceRaycastUpdate();				
+					(n as Enemy).Hit(damage,(HitArea)((int)raycast3D.GetCollider().GetMeta("HitArea", -1)));
+					raycast3D.SetCollisionMaskValue(2,false);
+				}
 			fireDelay = fireRate;
 			currentMagCount -= 1;
 		}
