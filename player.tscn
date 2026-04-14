@@ -25,6 +25,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.747925, -0.30966467)
 
 [node name="RayCast3D" type="RayCast3D" parent="Camera3D" unique_id=315015908]
 transform = Transform3D(1.9106855e-15, 4.371139e-08, 1, 1, -4.371139e-08, 0, 4.371139e-08, 1, -4.371139e-08, 0, 0, 0)
+visible = false
 target_position = Vector3(0, -50, 0)
 collide_with_areas = true
 debug_shape_custom_color = Color(0.848291, 0.06947427, 0.48400402, 1)

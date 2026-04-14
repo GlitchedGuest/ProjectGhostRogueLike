@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://feu3a2akvjw4"]
 
+[ext_resource type="Script" uid="uid://d2txpfghur7to" path="res://Room.cs" id="1_6p8v6"]
 [ext_resource type="Material" uid="uid://c6v8bjs57tyt7" path="res://Grid.tres" id="1_xl76n"]
+[ext_resource type="PackedScene" uid="uid://blirp8vfmloxt" path="res://enemy.tscn" id="2_psr6j"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_psr6j"]
 size = Vector3(20, 1, 20)
@@ -8,13 +10,20 @@ size = Vector3(20, 1, 20)
 [sub_resource type="BoxMesh" id="BoxMesh_6p8v6"]
 size = Vector3(20, 1, 20)
 
+[sub_resource type="NavigationMesh" id="NavigationMesh_xl76n"]
+vertices = PackedVector3Array(3.75, 1, -0.75, 4, 1, 0, 9.5, 1, 0, 9.5, 1, -9.5, -9.5, 1, 3.5, -6.5, 1, 3.5, -3.75, 1, -0.75, -9.5, 1, -9.5, -6.25, 1, 4.25, -9.5, 1, 9.5, 3.75, 1, 0.75, 9.5, 1, 9.5, -5.25, 1, 4.25, -3, 1, 0.75)
+polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 3), PackedInt32Array(5, 4, 6), PackedInt32Array(6, 4, 7), PackedInt32Array(6, 7, 0), PackedInt32Array(0, 7, 3), PackedInt32Array(5, 8, 4), PackedInt32Array(4, 8, 9), PackedInt32Array(10, 1, 2), PackedInt32Array(2, 11, 10), PackedInt32Array(10, 11, 12), PackedInt32Array(12, 11, 9), PackedInt32Array(9, 8, 12), PackedInt32Array(12, 13, 10)]
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_xl76n"]
 size = Vector3(20, 1, 20)
 
 [sub_resource type="BoxMesh" id="BoxMesh_psr6j"]
 size = Vector3(20, 1, 20)
 
+[sub_resource type="PlaneMesh" id="PlaneMesh_xl76n"]
+
 [node name="Node3D" type="Node3D" unique_id=1535535755]
+script = ExtResource("1_6p8v6")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1883778170]
 transform = Transform3D(1, 0, 0, 0, 0.56946605, 0.82201487, 0, -0.82201487, 0.56946605, 0, 13.702613, 0)
@@ -69,11 +78,47 @@ shape = SubResource("BoxShape3D_psr6j")
 mesh = SubResource("BoxMesh_6p8v6")
 surface_material_override/0 = ExtResource("1_xl76n")
 
-[node name="Ground" type="StaticBody3D" parent="." unique_id=998494052]
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=910660916]
+navigation_mesh = SubResource("NavigationMesh_xl76n")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground" unique_id=1742761633]
+[node name="Ground" type="StaticBody3D" parent="NavigationRegion3D" unique_id=998494052]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Ground" unique_id=1742761633]
 shape = SubResource("BoxShape3D_xl76n")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground" unique_id=1702782373]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/Ground" unique_id=1702782373]
 mesh = SubResource("BoxMesh_psr6j")
 surface_material_override/0 = ExtResource("1_xl76n")
+
+[node name="Ground3" type="StaticBody3D" parent="NavigationRegion3D" unique_id=866052760]
+transform = Transform3D(0.3443098, 0, 0, 0, 3.5570126, 0, 0, 0, 0.019883728, 0, 2.1594138, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Ground3" unique_id=801555199]
+shape = SubResource("BoxShape3D_xl76n")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/Ground3" unique_id=214260231]
+mesh = SubResource("BoxMesh_psr6j")
+surface_material_override/0 = ExtResource("1_xl76n")
+
+[node name="Ground4" type="StaticBody3D" parent="NavigationRegion3D" unique_id=1435532333]
+transform = Transform3D(0.12953667, 0, 0.0036626088, 0, 1.1084073, 0, -0.18563814, 0, 0.002555737, -4.4940577, 0.9833931, 1.6691749)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Ground4" unique_id=1305110415]
+shape = SubResource("BoxShape3D_xl76n")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/Ground4" unique_id=916219624]
+mesh = SubResource("BoxMesh_psr6j")
+surface_material_override/0 = ExtResource("1_xl76n")
+
+[node name="StaticPoints" type="Node3D" parent="." unique_id=983111462]
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="StaticPoints" unique_id=1514767509]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.3470454, 0.6298814, -6.8191304)
+mesh = SubResource("PlaneMesh_xl76n")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="StaticPoints" unique_id=1774291076]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.2868547, 0.51636004, -6.4744143)
+mesh = SubResource("PlaneMesh_xl76n")
+
+[node name="Enemy" parent="." unique_id=542262504 instance=ExtResource("2_psr6j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.37013292, 1.870491, 2.2309146)

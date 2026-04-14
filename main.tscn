@@ -2,14 +2,10 @@
 
 [ext_resource type="PackedScene" uid="uid://feu3a2akvjw4" path="res://Room01.tscn" id="1_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://dgc2dx8rp56ir" path="res://player.tscn" id="1_ig7tw"]
-[ext_resource type="PackedScene" uid="uid://blirp8vfmloxt" path="res://enemy.tscn" id="3_h2yge"]
 
 [node name="Main" type="Node" unique_id=1343790411]
 
 [node name="Node3D" parent="." unique_id=1535535755 instance=ExtResource("1_0xm2m")]
 
 [node name="Player" parent="." unique_id=526790128 instance=ExtResource("1_ig7tw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.2694726, 0)
-
-[node name="enemy" parent="." unique_id=2062582952 instance=ExtResource("3_h2yge")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5621877, 1.5, 0.1408112)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.2694726, -2.6973839)
